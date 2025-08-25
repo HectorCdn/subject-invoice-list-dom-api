@@ -7,6 +7,12 @@ const dialog = document.querySelector("#invoice-modal");
 const form = document.querySelector("invoice-form");
 const main = document.querySelector("main");
 
+const clientName = document.querySelector("invoice-name");
+const clientTag = document.querySelector("invoice-tag");
+const invoicePrice = document.querySelector("invoice-price");
+const progressStratus = document.querySelector("invoice-status");
+const invoiceDate = document.querySelector("invoice-date");
+
 function createNewCard() {
 	const card = document.createElement("div");
 	const cardTag = document.createElement("div");
@@ -27,15 +33,21 @@ function createNewCard() {
 	card.appendChild(name);
 	card.appendChild(cardPrice);
 	card.appendChild(cardStatus);
-    cardTag.appendChild(sharpTag);
-    cardtag.appendChild(numberTag);
-    cardPrice.appendChild(monoyLogo);
-    cardPrice.appendChild(moneyPrice);
-    cardStatus.appendChild(cardStatusCircle);
-    cardStatus.appendChild(cardStatusString);
+	cardTag.appendChild(sharpTag);
+	cardtag.appendChild(numberTag);
+	cardPrice.appendChild(monoyLogo);
+	cardPrice.appendChild(moneyPrice);
+	cardStatus.appendChild(cardStatusCircle);
+	cardStatus.appendChild(cardStatusString);
 
-    // card.setAttribute("class", "card");
-    card.className.add("card");
+	card.className.add("card");
+    cardTag.className.add("card-tag");
+    numberTag.className.add("heading-s", "black-text");
+    cardStatus.className.add("card-status");
+    cardStatusCircle.className.add("card-status-circle");
+    cardStatusString.className.add("heading-s");
+
+    return main; 
 }
 
 btnNewInvoice.addEventListener("click", () => {
@@ -47,5 +59,11 @@ btnCancel.addEventListener("click", () => {
 });
 
 btnSaveSend.addEventListener("click", () => {
-	e.preventDefault();
+    e.preventDefault();
+    
+	async function createNewCard() {
+		const reponse = await fetch(API_URL);
+		const card = await reponse.json();
+		console.log(card);
+	}
 });
