@@ -307,6 +307,7 @@ label {
 	padding: 12px 24px;
 	border-radius: 9999px;
 	gap: 0 12px;
+	cursor: pointer;
 }
 
 .btn.outlined {
